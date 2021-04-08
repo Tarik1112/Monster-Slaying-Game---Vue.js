@@ -7,7 +7,7 @@
 
 #header{
     height: 100px;
-    background-color: brown;
+    background-color: rgb(46, 67, 77);
     color: white;
     text-align: center;
     justify-content: center;  
@@ -16,7 +16,7 @@
 }
 
 body{
-    background-color: rgb(100, 69, 98);
+    background-color: rgb(197, 157, 194);
 }
 section {
     width: 90%;
