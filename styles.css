@@ -1,0 +1,47 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family:'Poppins', sans-serif;
+}
+
+#header{
+    height: 100px;
+    background-color: brown;
+    color: white;
+    text-align: center;
+    justify-content: center;  
+    padding-top: 0.2rem; 
+    margin-bottom: 40px;
+}
+
+body{
+    background-color: rgb(100, 69, 98);
+}
+section {
+    width: 90%;
+    max-width: 40rem;
+    margin: auto;    
+    background-color: white;  
+}
+
+.container{
+    text-align: center;
+    padding: 0.3rem;
+    margin: 1rem auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    border-radius: 12px;
+}
+.healthBar{
+    width: 100%;
+    height: 40px;
+    border: 1px solid #575757;
+    margin: 1rem 0;
+    background: #fde5e5;
+}
+
+.healthBarValue{
+    background-color: rgb(16, 141, 83);
+    height: 100%;
+    width: 100%;
+}
