@@ -7,7 +7,7 @@
 
 #header{
     height: 100px;
-    background-color: rgb(46, 67, 77);
+    background-color: rgba(216, 191, 216, 0.226);
     color: white;
     text-align: center;
     justify-content: center;  
@@ -16,13 +16,16 @@
 }
 
 body{
-    background-color: rgb(197, 157, 194);
+    background-color: rgba(197, 157, 194, 0.164);
+    background-image: url(/images/Game\ background.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
 }
 section {
     width: 90%;
     max-width: 40rem;
     margin: auto;    
-    background-color: white;  
+    background-color: white;
 }
 
 .container{
@@ -33,15 +36,40 @@ section {
     border-radius: 12px;
 }
 .healthBar{
-    width: 100%;
+    width: 95%;
     height: 40px;
+    border-radius: 10px;
     border: 1px solid #575757;
-    margin: 1rem 0;
+    margin: 1rem 1rem;
     background: #fde5e5;
+
 }
 
 .healthBarValue{
-    background-color: rgb(16, 141, 83);
+    background-color: rgb(80, 177, 131);
     height: 100%;
     width: 100%;
+    border-radius: 10px;
+    outline: none;
+}
+
+#buttonSection{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+button{
+    font: inherit;
+    border: 1px solid #2e3238;
+    background-color: #5d78f1;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    margin: 1rem;
+    width: 12rem;
+    cursor: pointer;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
 }
