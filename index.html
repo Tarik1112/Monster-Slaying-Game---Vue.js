@@ -31,8 +31,8 @@
         </section>
         <section id="buttonSection" class="container">
             <button @click="monsterAttack">Attack</button>
-            <button>Super Attack</button>
-            <button>Heal</button>
+            <button :disabled="specialUsing" @click="specialAttack">Super Attack</button>
+            <button @click="playerHeal">Heal</button>
             <button>Surrender</button>
         </section>
         <section id="battleLog" class="container">
