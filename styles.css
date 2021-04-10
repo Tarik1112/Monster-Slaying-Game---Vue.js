@@ -49,7 +49,7 @@ section {
     background-color: rgb(80, 177, 131);
     height: 100%;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 5px;
     outline: none;
 }
 
@@ -72,4 +72,16 @@ button{
     width: 12rem;
     cursor: pointer;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
+    outline: none;
+}
+
+button:hover{
+    background-color: rgb(179, 224, 241);
+    color: rgb(71, 70, 70);
+    
+}
+
+button:disabled{
+    background-color: gray;
+    color: gainsboro;
 }

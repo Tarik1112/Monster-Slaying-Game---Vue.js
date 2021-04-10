@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet">
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
     <title>Moster Slayer Game</title>
 </head>
 <body>
@@ -18,17 +20,17 @@
         <section id="monster" class="container">
             <h2>Monster Health</h2>
             <div class="healthBar">
-                <div class="healthBarValue"></div>
+                <div class="healthBarValue" :style="monsterBar"></div>
             </div>
         </section>
         <section id="player" class="container">
             <h2>Your Health</h2>
             <div class="healthBar">
-                <div class="healthBarValue"></div>
+                <div class="healthBarValue" :style="playerBar"></div>
             </div>
         </section>
         <section id="buttonSection" class="container">
-            <button>Attack</button>
+            <button @click="monsterAttack">Attack</button>
             <button>Super Attack</button>
             <button>Heal</button>
             <button>Surrender</button>
@@ -38,6 +40,6 @@
             <ul></ul>
         </section>
     </div>
-    <script src="app.js"></script>
+    
 </body>
 </html>
