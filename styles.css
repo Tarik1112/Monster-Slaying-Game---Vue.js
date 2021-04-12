@@ -16,10 +16,11 @@
 }
 
 body{
-    background-color: rgba(197, 157, 194, 0.164);
+    background-color: rgba(0, 0, 0, 0.164);
     background-image: url(/images/Game\ background.jpg);
     background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;
 }
 section {
     width: 90%;
@@ -85,3 +86,4 @@ button:disabled{
     background-color: gray;
     color: gainsboro;
 }
+
