@@ -1,49 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins"
+      rel="stylesheet"
+    />
     <script src="https://unpkg.com/vue@next" defer></script>
     <script src="app.js" defer></script>
     <title>Moster Slayer Game</title>
-</head>
-<body>
-    <header id='header'>
+  </head>
+  <body>
+    <div id="bg-box--image">
+        <img src="/images/Game background.jpg" alt="">
+      <header id="header">
         <h1>Monster Game</h1>
         <h2>Defeat the Monster!</h2>
-    </header>
-    <div id="game">
+      </header>
+      <div id="game">
         <section id="monster" class="container">
-            <h2>Monster Health</h2>
-            <div class="healthBar">
-                <div class="healthBarValue" :style="monsterBar"></div>
-            </div>
+          <h2>Monster Health</h2>
+          <div class="healthBar">
+            <div class="healthBarValue" :style="monsterBar"></div>
+          </div>
         </section>
         <section id="player" class="container">
-            <h2>Your Health</h2>
-            <div class="healthBar">
-                <div class="healthBarValue" :style="playerBar"></div>
-            </div>
+          <h2>Your Health</h2>
+          <div class="healthBar">
+            <div class="healthBarValue" :style="playerBar"></div>
+          </div>
         </section>
-        <section class = "container" v-if="winner">
-            <h2>Game Over!</h2>
-            <h3 v-if="winner ==='monster'">You lost!</h3>
-            <h3 v-else-if="winner === 'player'">You won!</h3>
-            <h3 v-else>Draw!</h3>
-            <button @click="startNewGame">Start New Game!</button>
-          </section>
+        <section class="container" v-if="winner">
+          <h2>Game Over!</h2>
+          <h3 v-if="winner ==='monster'">You lost!</h3>
+          <h3 v-else-if="winner === 'player'">You won!</h3>
+          <h3 v-else>Draw!</h3>
+          <button @click="startNewGame">Start New Game!</button>
+        </section>
         <section id="buttonSection" class="container" v-else>
-            <button @click="monsterAttack">Attack</button>
-            <button :disabled="specialUsing" @click="specialAttack">Super Attack</button>
-            <button @click="playerHeal">Heal</button>
-            <button @click="surrenderGame">Surrender</button>
+          <button @click="monsterAttack">Attack</button>
+          <button :disabled="specialUsing" @click="specialAttack">
+            Super Attack
+          </button>
+          <button @click="playerHeal">Heal</button>
+          <button @click="surrenderGame">Surrender</button>
         </section>
-        
+        <section id="log" class="container">
+          <h2>Battle Log</h2>
+          <ul>
+            <li v-for="logs in logMessages">
+              <span
+                :class="{'log--player': logs.actionBy === 'player', 'log--monster': logs.actionBy === 'monster'}"
+                >{{ logs.actionBy === 'player' ? 'Player' : 'Monster'}}</span
+              >
+              <span v-if="logs.actionType === 'heal' ">
+                heals himself for
+                <span class="log--heal">{{ logs.actionValue}}</span></span
+              >
+
+              <span v-else>
+                attacks and deals
+                <span class="log--damage">{{logs.actionValue}}</span>
+              </span>
+            </li>
+          </ul>
+        </section>
+      </div>
     </div>
-    
-</body>
+  </body>
 </html>

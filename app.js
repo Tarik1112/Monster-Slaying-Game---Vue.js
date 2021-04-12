@@ -9,62 +9,62 @@ const app = Vue.createApp({
       monsterHP: 100,
       counter: 0,
       winner: null,
-      
+      logMessages: [],
     };
   },
   computed: {
     monsterBar() {
-        if(this.monsterHP < 0){
-            return {width: '0%'}
-        }
-        return { width: this.monsterHP + "%" };
+      if (this.monsterHP < 0) {
+        return { width: "0%" };
+      }
+      return { width: this.monsterHP + "%" };
     },
     playerBar() {
-        if(this.playerHP < 0){
-            return {width: '0%'}
-        }
-        return { width: this.playerHP + "%" };
+      if (this.playerHP < 0) {
+        return { width: "0%" };
+      }
+      return { width: this.playerHP + "%" };
     },
     specialUsing() {
       return this.counter % 3 !== 0;
     },
   },
-  watch:{
-    playerHP(value){
-      if(value <= 0 && this.monsterHP <= 0){
-          this.winner = 'draw';
-      }else if(value <= 0){
-          this.winner = 'monster';
+  watch: {
+    playerHP(value) {
+      if (value <= 0 && this.monsterHP <= 0) {
+        this.winner = "draw";
+      } else if (value <= 0) {
+        this.winner = "monster";
       }
     },
-    monsterHP(value){
-      if(value <= 0 && this.playerHP <= 0){
-          this.winner = 'draw';
-      }else if(value <= 0){
-          this.winner = 'player';
+    monsterHP(value) {
+      if (value <= 0 && this.playerHP <= 0) {
+        this.winner = "draw";
+      } else if (value <= 0) {
+        this.winner = "player";
       }
-    }
+    },
   },
   methods: {
     monsterAttack() {
       this.counter++;
       const damage = randomValue(8, 14);
       this.monsterHP -= damage;
-     // console.log(this.monsterHP);
-      
+      // console.log(this.monsterHP);
+      this.addLog('player','attack',damage);
       this.playerAttack();
     },
     playerAttack() {
       const damage = randomValue(10, 18);
       this.playerHP -= damage;
-      
-
-     // console.log(this.playerHP);
+      this.addLog('monster','attack',damage);
+      // console.log(this.playerHP);
     },
     playerHeal() {
       this.counter++;
       const heal = randomValue(15, 20);
       this.playerHP += heal;
+      this.addLog('player','heal',heal);
       this.playerAttack();
     },
     specialAttack() {
@@ -73,19 +73,24 @@ const app = Vue.createApp({
       this.monsterHP -= damage;
       this.playerAttack();
     },
-    startNewGame(){
+    startNewGame() {
       this.playerHP = 100;
       this.monsterHP = 100;
       this.counter = 0;
       this.winner = null;
       this.logMessages = [];
     },
-    surrenderGame(){
+    surrenderGame() {
       this.winner = "monster";
     },
-    
+    addLog(who, what, value) {
+      this.logMessages.unshift({
+        actionBy: who,
+        actionType: what,
+        actionValue: value,
+      });
+    },
   },
-  
 });
 
 app.mount("#game");
